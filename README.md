@@ -4,7 +4,9 @@ Sistema para organizar os livros que eu tenho, estou lendo ou quero ler.
 
 Trabalho Prático Individual.
 
-Site publicado: (link do GitHub Pages)
+Site publicado: https://wyatt-sperber.github.io/minha-estantes/git add README.md
+git commit -m "docs: adiciona link do GitHub Pages no README"
+git push
 
 ## Entidade principal
 
