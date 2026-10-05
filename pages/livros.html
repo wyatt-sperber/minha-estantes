@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus livros - Minha Estante</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Minha Estante</h1>
+    <p>Organize os livros que você tem, está lendo ou quer ler.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="livros.html">Meus livros</a></li>
+        <li><a href="cadastro.html">Cadastrar livro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Meus livros</h2>
+
+    <!-- Pesquisa, filtro e ordenação -->
+    <section>
+      <h3>Pesquisar</h3>
+      <form>
+        <label for="pesquisa">Título ou autor:</label>
+        <input type="search" id="pesquisa" name="pesquisa" placeholder="Digite o título ou o autor">
+
+        <label for="filtro-status">Status:</label>
+        <select id="filtro-status" name="status">
+          <option value="todos">Todos</option>
+          <option value="quero-ler">Quero ler</option>
+          <option value="lendo">Lendo</option>
+          <option value="lido">Lido</option>
+        </select>
+
+        <label for="filtro-categoria">Categoria:</label>
+        <select id="filtro-categoria" name="categoria">
+          <option value="todas">Todas</option>
+          <option value="romance">Romance</option>
+          <option value="fantasia">Fantasia</option>
+          <option value="ficcao-cientifica">Ficção científica</option>
+          <option value="distopia">Distopia</option>
+          <option value="historia">História</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label for="ordenar">Ordenar por:</label>
+        <select id="ordenar" name="ordenar">
+          <option value="titulo">Título (A-Z)</option>
+          <option value="autor">Autor (A-Z)</option>
+          <option value="ano">Ano</option>
+          <option value="nota">Nota</option>
+        </select>
+
+        <button type="submit">Pesquisar</button>
+      </form>
+    </section>
+
+    <!-- Lista de livros -->
+    <section>
+      <h3>Livros cadastrados</h3>
+      <p><a href="cadastro.html">+ Cadastrar novo livro</a></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Capa</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoria</th>
+            <th>Ano</th>
+            <th>Status</th>
+            <th>Nota</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="../assets/img/1984.jpg" alt="Capa do livro 1984" width="50"></td>
+            <td>1984</td>
+            <td>George Orwell</td>
+            <td>Distopia</td>
+            <td>1949</td>
+            <td>Lido</td>
+            <td>4</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../assets/img/a-hora-da-estrela.jpg" alt="Capa do livro A Hora da Estrela" width="50"></td>
+            <td>A Hora da Estrela</td>
+            <td>Clarice Lispector</td>
+            <td>Romance</td>
+            <td>1977</td>
+            <td>Lido</td>
+            <td>4</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../assets/img/dom-casmurro.jpg" alt="Capa do livro Dom Casmurro" width="50"></td>
+            <td>Dom Casmurro</td>
+            <td>Machado de Assis</td>
+            <td>Romance</td>
+            <td>1899</td>
+            <td>Lido</td>
+            <td>5</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../assets/img/sem-capa.jpg" alt="Livro sem capa" width="50"></td>
+            <td>Grande Sertão: Veredas</td>
+            <td>João Guimarães Rosa</td>
+            <td>Romance</td>
+            <td>1956</td>
+            <td>Quero ler</td>
+            <td>-</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../assets/img/o-hobbit.jpg" alt="Capa do livro O Hobbit" width="50"></td>
+            <td>O Hobbit</td>
+            <td>J.R.R. Tolkien</td>
+            <td>Fantasia</td>
+            <td>1937</td>
+            <td>Lendo</td>
+            <td>-</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../assets/img/sapiens.jpg" alt="Capa do livro Sapiens" width="50"></td>
+            <td>Sapiens</td>
+            <td>Yuval Noah Harari</td>
+            <td>História</td>
+            <td>2011</td>
+            <td>Lendo</td>
+            <td>-</td>
+            <td>
+              <a href="detalhes.html">Ver detalhes</a>
+              <a href="editar.html">Editar</a>
+              <button type="button">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Minha Estante - 2026 - Feito por Wyatt</p>
+  </footer>
+</body>
+</html>
