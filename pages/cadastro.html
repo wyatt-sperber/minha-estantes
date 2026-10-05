@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar livro - Minha Estante</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Minha Estante</h1>
+    <p>Organize os livros que você tem, está lendo ou quer ler.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="livros.html">Meus livros</a></li>
+        <li><a href="cadastro.html">Cadastrar livro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Cadastrar livro</h2>
+
+    <!-- Busca na API (vai funcionar na Etapa 3) -->
+    <section>
+      <h3>Buscar na Open Library</h3>
+      <p>Pesquise o livro para preencher os dados automaticamente.</p>
+      <form>
+        <label for="busca-api">Nome do livro:</label>
+        <input type="search" id="busca-api" name="busca-api">
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <!-- Formulário de cadastro -->
+    <section>
+      <h3>Dados do livro</h3>
+      <form>
+        <p>
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" required>
+        </p>
+
+        <p>
+          <label for="autor">Autor:</label>
+          <input type="text" id="autor" name="autor" required>
+        </p>
+
+        <p>
+          <label for="categoria">Categoria:</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione</option>
+            <option value="romance">Romance</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="ficcao-cientifica">Ficção científica</option>
+            <option value="distopia">Distopia</option>
+            <option value="historia">História</option>
+            <option value="outros">Outros</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="ano">Ano:</label>
+          <input type="number" id="ano" name="ano" min="1000" max="2026">
+        </p>
+
+        <p>
+          <label for="paginas">Número de páginas:</label>
+          <input type="number" id="paginas" name="paginas" min="1">
+        </p>
+
+        <p>
+          <label for="capa">Link da capa:</label>
+          <input type="url" id="capa" name="capa" placeholder="https://...">
+        </p>
+
+        <fieldset>
+          <legend>Status de leitura</legend>
+          <input type="radio" id="quero-ler" name="status" value="quero-ler" checked>
+          <label for="quero-ler">Quero ler</label>
+          <input type="radio" id="lendo" name="status" value="lendo">
+          <label for="lendo">Lendo</label>
+          <input type="radio" id="lido" name="status" value="lido">
+          <label for="lido">Lido</label>
+        </fieldset>
+
+        <p>
+          <label for="nota">Nota:</label>
+          <select id="nota" name="nota">
+            <option value="">Sem nota</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="data">Terminei de ler em:</label>
+          <input type="date" id="data" name="data">
+        </p>
+
+        <p>
+          <input type="checkbox" id="favorito" name="favorito">
+          <label for="favorito">Favorito</label>
+        </p>
+
+        <p>
+          <label for="observacoes">Observações:</label><br>
+          <textarea id="observacoes" name="observacoes" rows="4" cols="40"></textarea>
+        </p>
+
+        <button type="submit">Salvar</button>
+        <button type="reset">Limpar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Minha Estante - 2026 - Feito por Wyatt</p>
+  </footer>
+</body>
+</html>
