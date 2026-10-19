@@ -619,3 +619,68 @@ legend {
   gap: 1rem;
   padding-top: 0.5rem;
 }
+
+/* =====================================================
+   7. PÁGINA DE DETALHES
+   ===================================================== */
+
+/* Livro à esquerda e caixa "Mais informações" à direita */
+.pagina-detalhes {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Capa à esquerda e informações à direita */
+.detalhes-livro {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+}
+
+.detalhes-livro img {
+  width: 100%;
+  border-radius: var(--raio);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.detalhes-info h2 {
+  margin-bottom: 0.25rem;
+}
+
+.autor {
+  font-size: 1.15rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 0.5rem;
+}
+
+.detalhes-info h3 {
+  margin-top: 1.5rem;
+}
+
+/* Informações do livro em 2 colunas */
+.lista-info {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.lista-info li {
+  padding: 0.6rem 0.8rem;
+  background-color: var(--cor-fundo);
+  border-radius: var(--raio);
+}
+
+.lista-info strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cor-texto-suave);
+}
+
+.detalhes-info .acoes {
+  margin-top: 1.5rem;
+}
