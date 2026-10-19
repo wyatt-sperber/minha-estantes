@@ -545,3 +545,77 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+/* =====================================================
+   6. FORMULÁRIO DE CADASTRO E EDIÇÃO
+   ===================================================== */
+
+/* Busca na Open Library: campo e botão na mesma linha */
+.form-busca {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.linha-busca {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.linha-busca input {
+  flex: 1;
+}
+
+.aviso-obrigatorio {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+/* Formulário em 2 colunas */
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1.5rem;
+}
+
+/* Itens que ocupam a linha inteira */
+.campo-inteiro {
+  grid-column: 1 / -1;
+}
+
+fieldset {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-weight: 600;
+}
+
+/* Opções de rádio e checkbox */
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.opcao label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
