@@ -169,3 +169,193 @@ main > section {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* =====================================================
+   3. COMPONENTES: CAIXAS, BOTÕES, CAMPOS E MENSAGENS
+   ===================================================== */
+
+/* Caixa branca usada em várias páginas */
+.caixa {
+  background-color: var(--cor-caixa);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+  margin-bottom: 1.5rem;
+}
+
+/* ----- Botões ----- */
+.botao {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: var(--cor-principal);
+  border: 2px solid var(--cor-principal);
+  border-radius: var(--raio);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.botao:hover {
+  color: #ffffff;
+  background-color: var(--cor-principal-escura);
+  border-color: var(--cor-principal-escura);
+}
+
+/* Efeito de "apertar" ao clicar */
+.botao:active {
+  transform: scale(0.97);
+}
+
+.botao-secundario {
+  color: var(--cor-principal);
+  background-color: transparent;
+}
+
+.botao-secundario:hover {
+  color: var(--cor-principal-escura);
+  background-color: var(--cor-principal-clara);
+}
+
+.botao-perigo {
+  background-color: var(--cor-perigo);
+  border-color: var(--cor-perigo);
+}
+
+.botao-perigo:hover {
+  background-color: #8c1d17;
+  border-color: #8c1d17;
+}
+
+.botao-pequeno {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+/* Contorno bem visível quando o elemento recebe foco pelo teclado (Tab) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--cor-principal);
+  outline-offset: 2px;
+}
+
+/* ----- Campos de formulário ----- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--cor-texto);
+  background-color: #ffffff;
+  border: 2px solid var(--cor-borda-campo);
+  border-radius: var(--raio);
+  transition: border-color 0.2s;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--cor-principal);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--cor-principal);
+  background-color: #fffdf9;
+}
+
+/* Campo com valor inválido (ex.: obrigatório vazio) fica vermelho enquanto está em foco */
+input:focus:invalid,
+select:focus:invalid {
+  border-color: var(--cor-perigo);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--cor-principal);
+  cursor: pointer;
+}
+
+/* ----- Etiquetas de status ----- */
+.status {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status.lido {
+  background-color: #dff0e3;
+  color: #1e5e33;
+}
+
+.status.lendo {
+  background-color: #dde8f6;
+  color: #1f4e8c;
+}
+
+.status.quero-ler {
+  background-color: #fbeccf;
+  color: #7a4f00;
+}
+
+/* ----- Mensagens para o usuário ----- */
+.mensagem {
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid;
+  border-radius: var(--raio);
+  font-weight: 600;
+}
+
+.mensagem.sucesso {
+  background-color: #dff0e3;
+  color: #1e5e33;
+  border-color: #2e7d46;
+}
+
+.mensagem.info {
+  background-color: #dde8f6;
+  color: #1f4e8c;
+  border-color: #1f4e8c;
+}
+
+.mensagem.erro {
+  background-color: #fbe3e1;
+  color: #8c1d17;
+  border-color: var(--cor-perigo);
+}
