@@ -7,50 +7,59 @@
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Minha Estante</h1>
-    <p>Organize os livros que você tem, está lendo ou quer ler.</p>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="livros.html">Meus livros</a></li>
-        <li><a href="cadastro.html">Cadastrar livro</a></li>
-      </ul>
-    </nav>
+  <header class="cabecalho">
+    <div class="cabecalho-conteudo">
+      <div class="logo">
+        <h1>Minha Estante</h1>
+        <p>Organize os livros que você tem, está lendo ou quer ler.</p>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="livros.html" class="ativo">Meus livros</a></li>
+          <li><a href="cadastro.html">Cadastrar livro</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <article>
-      <h2>Dom Casmurro</h2>
-      <img src="../assets/img/dom-casmurro.jpg" alt="Capa do livro Dom Casmurro" width="200">
+  <main class="container pagina-detalhes">
+    <article class="caixa detalhes-livro">
+      <img src="../assets/img/torto-arado.jpg" alt="Capa do livro Torto Arado" width="200">
 
-      <h3>Informações</h3>
-      <ul>
-        <li><strong>Autor:</strong> Machado de Assis</li>
-        <li><strong>Categoria:</strong> Romance</li>
-        <li><strong>Ano:</strong> 1899</li>
-        <li><strong>Páginas:</strong> 256</li>
-        <li><strong>Status:</strong> Lido</li>
-        <li><strong>Nota:</strong> 5</li>
-        <li><strong>Terminei de ler em:</strong> 15/03/2026</li>
-        <li><strong>Favorito:</strong> Sim</li>
-      </ul>
+      <div class="detalhes-info">
+        <h2>Torto Arado</h2>
+        <p class="autor">Itamar Vieira Junior</p>
+        <span class="status lido">Lido</span>
 
-      <h3>Observações</h3>
-      <p>Li para a aula de literatura. Gostei muito do final e fiquei na dúvida sobre a Capitu.</p>
+        <h3>Informações</h3>
+        <ul class="lista-info">
+          <li><strong>Categoria</strong> Romance</li>
+          <li><strong>Ano</strong> 2019</li>
+          <li><strong>Páginas</strong> 264</li>
+          <li><strong>Nota</strong> 5/5</li>
+          <li><strong>Terminei de ler em</strong> 15/03/2026</li>
+          <li><strong>Favorito</strong> Sim</li>
+        </ul>
 
-      <a href="editar.html">Editar</a>
-      <button type="button">Excluir</button>
-      <a href="livros.html">Voltar</a>
+        <h3>Observações</h3>
+        <p>A história das irmãs Bibiana e Belonísia no sertão da Bahia me marcou muito. Um dos melhores livros que já li.</p>
+
+        <div class="acoes">
+          <a href="editar.html" class="botao">Editar</a>
+          <button type="button" class="botao botao-perigo">Excluir</button>
+          <a href="livros.html" class="botao botao-secundario">Voltar</a>
+        </div>
+      </div>
     </article>
 
-    <aside>
+    <aside class="caixa dica">
       <h3>Mais informações</h3>
-      <p>Veja mais sobre este livro na <a href="https://openlibrary.org/search?q=Dom+Casmurro">Open Library</a>.</p>
+      <p>Veja mais sobre este livro na <a href="https://openlibrary.org/search?q=Torto+Arado">Open Library</a>.</p>
     </aside>
   </main>
 
-  <footer>
+  <footer class="rodape">
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
 </body>
