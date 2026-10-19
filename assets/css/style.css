@@ -359,3 +359,107 @@ input[type="checkbox"] {
   color: #8c1d17;
   border-color: var(--cor-perigo);
 }
+
+/* =====================================================
+   4. PÁGINA INICIAL
+   ===================================================== */
+
+.boas-vindas {
+  border-left: 6px solid var(--cor-principal);
+}
+
+.boas-vindas p {
+  font-size: 1.1rem;
+  max-width: 60ch;
+}
+
+/* Cartões dos livros "Lendo agora": o grid cria quantas colunas couberem */
+.grade-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.cartao-livro {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--cor-caixa);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cartao-livro:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.cartao-livro img {
+  width: 90px;
+  border-radius: 4px;
+}
+
+.cartao-livro div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.cartao-livro h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.cartao-livro p {
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+.cartao-livro a {
+  margin-top: auto;
+  font-weight: 600;
+}
+
+/* Números da estante: 4 colunas iguais */
+.numeros {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.numeros li {
+  padding: 1rem;
+  text-align: center;
+  color: var(--cor-texto-suave);
+  background-color: var(--cor-caixa);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.numeros strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  color: var(--cor-principal);
+}
+
+/* Caixa de dica */
+.dica {
+  background-color: var(--cor-principal-clara);
+  border-color: #dcc5cd;
+}
+
+.dica h2,
+.dica h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.dica p {
+  margin: 0;
+}
