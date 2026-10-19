@@ -463,3 +463,85 @@ input[type="checkbox"] {
 .dica p {
   margin: 0;
 }
+
+/* =====================================================
+   5. LISTA DE LIVROS: PESQUISA, FILTROS E TABELA
+   ===================================================== */
+
+/* Título da página e botão na mesma linha */
+.titulo-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-pagina h2 {
+  margin: 0;
+}
+
+/* Pesquisa, filtros e ordenação lado a lado */
+.filtros {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.contador {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* Se a tela for pequena, a tabela rola dentro da caixa (e não a página toda) */
+.tabela-container {
+  overflow-x: auto;
+}
+
+.tabela-livros {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-livros th {
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  background-color: var(--cor-principal);
+}
+
+.tabela-livros td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* Linhas zebradas */
+.tabela-livros tbody tr:nth-child(even) {
+  background-color: #faf7f2;
+}
+
+.tabela-livros tbody tr:hover {
+  background-color: var(--cor-principal-clara);
+}
+
+.tabela-livros img {
+  width: 50px;
+  border-radius: 4px;
+}
+
+.titulo-livro {
+  font-weight: 700;
+}
+
+/* Botões de ação um do lado do outro */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
