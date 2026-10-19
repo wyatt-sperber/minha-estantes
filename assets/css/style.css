@@ -1,1 +1,97 @@
-/* Estilos do site - serão feitos na Etapa 2 */
+/* =====================================================
+   MINHA ESTANTE - Folha de estilos
+   ===================================================== */
+
+/* =====================================================
+   1. IDENTIDADE VISUAL
+   Cores, fontes e estilos básicos usados no site todo
+   ===================================================== */
+
+/* Variáveis com as cores do site */
+:root {
+  --cor-principal: #5b2a3c;        /* vinho */
+  --cor-principal-escura: #40192a;
+  --cor-principal-clara: #f3e9ec;
+  --cor-fundo: #f7f3ec;            /* bege claro, cor de papel */
+  --cor-caixa: #ffffff;
+  --cor-texto: #2b2523;
+  --cor-texto-suave: #6b625c;
+  --cor-borda: #e2d9cc;
+  --cor-borda-campo: #8c7e70;
+  --cor-perigo: #b3261e;           /* vermelho do botão excluir */
+  --raio: 8px;
+  --sombra: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Zera margens e faz o padding/borda contarem dentro da largura */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+
+  /* Flexbox em coluna para o rodapé ficar sempre no fim da página */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* O conteúdo principal ocupa o espaço que sobrar */
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.2;
+  color: var(--cor-principal);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--cor-principal);
+}
+
+a:hover {
+  color: var(--cor-principal-escura);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Área central com largura máxima */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+main > section {
+  margin-bottom: 2.5rem;
+}
