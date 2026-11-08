@@ -30,14 +30,17 @@
     <section class="caixa">
       <h3>Buscar na Open Library</h3>
       <p>Pesquise o livro para preencher os dados automaticamente.</p>
-      <form class="form-busca">
+      <form id="form-busca" class="form-busca">
         <label for="busca-api">Nome do livro</label>
         <div class="linha-busca">
           <input type="search" id="busca-api" name="busca-api" placeholder="Ex.: Torto Arado">
-          <button type="submit" class="botao">Buscar</button>
+          <button type="submit" class="botao" id="botao-buscar">Buscar</button>
         </div>
       </form>
-      <p class="mensagem info">Os resultados da busca vão aparecer aqui.</p>
+      <p id="status-busca" class="mensagem info">Os resultados da busca vão aparecer aqui.</p>
+
+      <!-- Resultados da API (criados pelo JavaScript) -->
+      <ul id="resultados-api" class="resultados-api"></ul>
     </section>
 
     <!-- Formulário de cadastro -->
