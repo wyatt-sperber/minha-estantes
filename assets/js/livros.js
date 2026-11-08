@@ -9,6 +9,7 @@ const formFiltros = document.querySelector("#form-filtros");
 const campoPesquisa = document.querySelector("#pesquisa");
 const filtroStatus = document.querySelector("#filtro-status");
 const filtroCategoria = document.querySelector("#filtro-categoria");
+const campoOrdenar = document.querySelector("#ordenar");
 
 // Cria uma linha da tabela para um livro
 function criarLinha(livro) {
@@ -104,7 +105,38 @@ function normalizar(texto) {
   return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// Aplica a pesquisa e os filtros e mostra o resultado
+// Compara dois textos em ordem alfabética (respeitando acentos do português)
+function compararTexto(a, b) {
+  return a.localeCompare(b, "pt-BR");
+}
+
+// Devolve a lista ordenada pelo critério escolhido no select
+function ordenarLivros(livros, criterio) {
+  // Faz uma cópia para não bagunçar a lista original
+  const copia = livros.slice();
+
+  copia.sort(function (a, b) {
+    if (criterio === "autor") {
+      return compararTexto(a.autor, b.autor) || compararTexto(a.titulo, b.titulo);
+    }
+    if (criterio === "ano-recente") {
+      // Livros sem ano ficam no fim
+      return (b.ano || 0) - (a.ano || 0) || compararTexto(a.titulo, b.titulo);
+    }
+    if (criterio === "ano-antigo") {
+      return (a.ano || 9999) - (b.ano || 9999) || compararTexto(a.titulo, b.titulo);
+    }
+    if (criterio === "nota") {
+      return (b.nota || 0) - (a.nota || 0) || compararTexto(a.titulo, b.titulo);
+    }
+    // Padrão: título de A a Z
+    return compararTexto(a.titulo, b.titulo);
+  });
+
+  return copia;
+}
+
+// Aplica a pesquisa, os filtros e a ordenação e mostra o resultado
 function atualizarLista() {
   let livros = carregarLivros();
 
@@ -130,6 +162,8 @@ function atualizarLista() {
     });
   }
 
+  livros = ordenarLivros(livros, campoOrdenar.value);
+
   mostrarLivros(livros);
 }
 
@@ -137,6 +171,7 @@ function atualizarLista() {
 campoPesquisa.addEventListener("input", atualizarLista);
 filtroStatus.addEventListener("change", atualizarLista);
 filtroCategoria.addEventListener("change", atualizarLista);
+campoOrdenar.addEventListener("change", atualizarLista);
 
 // O botão "Pesquisar" também funciona (sem recarregar a página)
 formFiltros.addEventListener("submit", function (evento) {
