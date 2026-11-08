@@ -32,36 +32,18 @@
 
     <section>
       <h2>Lendo agora</h2>
-      <div class="grade-cartoes">
-        <article class="cartao-livro">
-          <img src="assets/img/estarao-as-prisoes-obsoletas.jpg" alt="Capa do livro Estarão as prisões obsoletas?" width="100">
-          <div>
-            <h3>Estarão as prisões obsoletas?</h3>
-            <p>Angela Davis</p>
-            <span class="status lendo">Lendo</span>
-            <a href="pages/detalhes.html?id=2">Ver detalhes</a>
-          </div>
-        </article>
-
-        <article class="cartao-livro">
-          <img src="assets/img/poncia-vicencio.jpg" alt="Capa do livro Ponciá Vicêncio" width="100">
-          <div>
-            <h3>Ponciá Vicêncio</h3>
-            <p>Conceição Evaristo</p>
-            <span class="status lendo">Lendo</span>
-            <a href="pages/detalhes.html?id=4">Ver detalhes</a>
-          </div>
-        </article>
-      </div>
+      <!-- Os cartões são criados pelo JavaScript (inicio.js) com os livros marcados como "Lendo" -->
+      <div class="grade-cartoes" id="lendo-agora"></div>
+      <p id="nada-lendo" class="mensagem info" hidden>Nenhum livro marcado como "Lendo" no momento.</p>
     </section>
 
     <section>
       <h2>Minha estante em números</h2>
       <ul class="numeros">
-        <li><strong>6</strong> livros no total</li>
-        <li><strong>3</strong> lidos</li>
-        <li><strong>2</strong> lendo</li>
-        <li><strong>1</strong> quero ler</li>
+        <li><strong id="total-livros">0</strong> livros no total</li>
+        <li><strong id="total-lidos">0</strong> lidos</li>
+        <li><strong id="total-lendo">0</strong> lendo</li>
+        <li><strong id="total-quero-ler">0</strong> quero ler</li>
       </ul>
       <a href="pages/livros.html" class="botao botao-secundario">Ver todos os livros</a>
     </section>
@@ -76,5 +58,6 @@
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/inicio.js"></script>
 </body>
 </html>
