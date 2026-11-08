@@ -837,3 +837,25 @@ legend {
     font-weight: 600;
   }
 }
+
+/* =====================================================
+   9. ESTADOS CRIADOS PELO JAVASCRIPT
+   ===================================================== */
+
+/* Campo com erro de validação */
+input.invalido,
+select.invalido,
+textarea.invalido {
+  border-color: var(--cor-perigo);
+  background-color: #fdf3f2;
+}
+
+/* Lista de erros dentro da mensagem */
+.mensagem ul {
+  margin: 0.5rem 0 0 1.25rem;
+  font-weight: 400;
+}
+
+.mensagem p {
+  margin: 0;
+}

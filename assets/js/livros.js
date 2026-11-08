@@ -51,4 +51,23 @@ function mostrarLivros(livros) {
   listaVazia.hidden = livros.length > 0;
 }
 
+// Mostra a mensagem de sucesso quando a página abre com ?msg=... no endereço
+function mostrarMensagemDaUrl() {
+  const mensagens = {
+    cadastrado: "Livro cadastrado com sucesso!",
+    editado: "Alterações salvas com sucesso!",
+    excluido: "Livro excluído da estante."
+  };
+
+  const parametros = new URLSearchParams(window.location.search);
+  const tipo = parametros.get("msg");
+  const caixa = document.querySelector("#mensagem");
+
+  if (mensagens[tipo]) {
+    caixa.textContent = mensagens[tipo];
+    caixa.hidden = false;
+  }
+}
+
+mostrarMensagemDaUrl();
 mostrarLivros(carregarLivros());

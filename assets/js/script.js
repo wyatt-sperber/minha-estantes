@@ -174,3 +174,80 @@ function pegarIdDaUrl() {
   const parametros = new URLSearchParams(window.location.search);
   return Number(parametros.get("id"));
 }
+
+// ----- Formulário (usado no cadastro e na edição) -----
+
+// Lê os campos do formulário e monta um objeto livro
+function lerFormulario(form) {
+  const campos = form.elements;
+
+  return {
+    titulo: campos.titulo.value.trim(),
+    autor: campos.autor.value.trim(),
+    categoria: campos.categoria.value,
+    ano: campos.ano.value ? Number(campos.ano.value) : "",
+    paginas: campos.paginas.value ? Number(campos.paginas.value) : "",
+    capa: campos.capa.value.trim(),
+    status: campos.status.value,
+    nota: campos.nota.value ? Number(campos.nota.value) : "",
+    dataConclusao: campos.data.value,
+    favorito: campos.favorito.checked,
+    observacoes: campos.observacoes.value.trim()
+  };
+}
+
+// Confere os dados do livro e devolve uma lista de erros (vazia se estiver tudo certo)
+function validarLivro(livro) {
+  const erros = [];
+  const anoAtual = new Date().getFullYear();
+  const hoje = new Date().toISOString().slice(0, 10);
+
+  if (livro.titulo === "") {
+    erros.push({ campo: "titulo", texto: "Informe o título do livro." });
+  }
+  if (livro.autor === "") {
+    erros.push({ campo: "autor", texto: "Informe o autor." });
+  }
+  if (livro.categoria === "") {
+    erros.push({ campo: "categoria", texto: "Escolha uma categoria." });
+  }
+  if (livro.ano !== "" && (livro.ano < 1000 || livro.ano > anoAtual)) {
+    erros.push({ campo: "ano", texto: "O ano deve estar entre 1000 e " + anoAtual + "." });
+  }
+  if (livro.paginas !== "" && livro.paginas < 1) {
+    erros.push({ campo: "paginas", texto: "O número de páginas deve ser maior que zero." });
+  }
+  if (livro.capa !== "" && !livro.capa.startsWith("http")) {
+    erros.push({ campo: "capa", texto: "O link da capa deve começar com http:// ou https://." });
+  }
+  if (livro.dataConclusao !== "" && livro.dataConclusao > hoje) {
+    erros.push({ campo: "data", texto: "A data em que terminou de ler não pode estar no futuro." });
+  }
+
+  return erros;
+}
+
+// Mostra os erros na caixa vermelha e marca os campos com problema
+function mostrarErros(form, caixaErros, erros) {
+  // Tira as marcações de erro antigas
+  const marcados = form.querySelectorAll(".invalido");
+  marcados.forEach(function (campo) {
+    campo.classList.remove("invalido");
+  });
+
+  if (erros.length === 0) {
+    caixaErros.hidden = true;
+    return;
+  }
+
+  let html = "<p>Corrija os campos abaixo:</p><ul>";
+  for (const erro of erros) {
+    html += "<li>" + erro.texto + "</li>";
+    form.elements[erro.campo].classList.add("invalido");
+  }
+  html += "</ul>";
+
+  caixaErros.innerHTML = html;
+  caixaErros.hidden = false;
+  caixaErros.scrollIntoView({ behavior: "smooth", block: "center" });
+}

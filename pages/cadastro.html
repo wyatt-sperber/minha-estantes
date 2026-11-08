@@ -45,7 +45,10 @@
       <h3>Dados do livro</h3>
       <p class="aviso-obrigatorio">Campos com * são obrigatórios.</p>
 
-      <form class="formulario">
+      <!-- Lista de erros da validação (preenchida pelo JavaScript) -->
+      <div id="erros" class="mensagem erro" hidden></div>
+
+      <form id="form-livro" class="formulario" novalidate>
         <div class="campo">
           <label for="titulo">Título *</label>
           <input type="text" id="titulo" name="titulo" required>
@@ -143,5 +146,6 @@
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/cadastro.js"></script>
 </body>
 </html>
