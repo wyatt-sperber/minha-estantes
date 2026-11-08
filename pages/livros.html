@@ -29,8 +29,8 @@
       <a href="cadastro.html" class="botao">+ Cadastrar livro</a>
     </div>
 
-    <!-- Exemplo de mensagem: na Etapa 3 vai aparecer depois de salvar um livro -->
-    <p class="mensagem sucesso">Livro cadastrado com sucesso!</p>
+    <!-- Mensagem de aviso (aparece depois de cadastrar, editar ou excluir) -->
+    <p id="mensagem" class="mensagem sucesso" hidden></p>
 
     <!-- Pesquisa, filtro e ordenação -->
     <section class="caixa">
@@ -83,7 +83,7 @@
     <!-- Lista de livros -->
     <section class="caixa">
       <h3>Livros cadastrados</h3>
-      <p class="contador">6 livros encontrados</p>
+      <p id="contador" class="contador"></p>
 
       <div class="tabela-container">
         <table class="tabela-livros">
@@ -99,106 +99,12 @@
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><img src="../assets/img/sem-capa.jpg" alt="Livro sem capa" width="50"></td>
-              <td class="titulo-livro">Becos da Memória</td>
-              <td>Conceição Evaristo</td>
-              <td>Romance</td>
-              <td>2006</td>
-              <td><span class="status quero-ler">Quero ler</span></td>
-              <td>-</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="../assets/img/estarao-as-prisoes-obsoletas.jpg" alt="Capa do livro Estarão as prisões obsoletas?" width="50"></td>
-              <td class="titulo-livro">Estarão as prisões obsoletas?</td>
-              <td>Angela Davis</td>
-              <td>Ensaio</td>
-              <td>2003</td>
-              <td><span class="status lendo">Lendo</span></td>
-              <td>-</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="../assets/img/insubmissas-lagrimas-de-mulheres.jpg" alt="Capa do livro Insubmissas lágrimas de mulheres" width="50"></td>
-              <td class="titulo-livro">Insubmissas lágrimas de mulheres</td>
-              <td>Conceição Evaristo</td>
-              <td>Contos</td>
-              <td>2011</td>
-              <td><span class="status lido">Lido</span></td>
-              <td>4/5</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="../assets/img/olhos-dagua.jpg" alt="Capa do livro Olhos d'água" width="50"></td>
-              <td class="titulo-livro">Olhos d'água</td>
-              <td>Conceição Evaristo</td>
-              <td>Contos</td>
-              <td>2014</td>
-              <td><span class="status lido">Lido</span></td>
-              <td>5/5</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="../assets/img/poncia-vicencio.jpg" alt="Capa do livro Ponciá Vicêncio" width="50"></td>
-              <td class="titulo-livro">Ponciá Vicêncio</td>
-              <td>Conceição Evaristo</td>
-              <td>Romance</td>
-              <td>2003</td>
-              <td><span class="status lendo">Lendo</span></td>
-              <td>-</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="../assets/img/torto-arado.jpg" alt="Capa do livro Torto Arado" width="50"></td>
-              <td class="titulo-livro">Torto Arado</td>
-              <td>Itamar Vieira Junior</td>
-              <td>Romance</td>
-              <td>2019</td>
-              <td><span class="status lido">Lido</span></td>
-              <td>5/5</td>
-              <td>
-                <div class="acoes">
-                  <a href="detalhes.html" class="botao botao-pequeno">Detalhes</a>
-                  <a href="editar.html" class="botao botao-pequeno botao-secundario">Editar</a>
-                  <button type="button" class="botao botao-pequeno botao-perigo">Excluir</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+          <!-- As linhas são criadas pelo JavaScript (livros.js) -->
+          <tbody id="lista-livros"></tbody>
         </table>
       </div>
+
+      <p id="lista-vazia" class="mensagem info" hidden>Nenhum livro encontrado.</p>
     </section>
   </main>
 
@@ -206,5 +112,6 @@
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/livros.js"></script>
 </body>
 </html>
