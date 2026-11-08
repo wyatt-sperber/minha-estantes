@@ -7,6 +7,8 @@ const contador = document.querySelector("#contador");
 const listaVazia = document.querySelector("#lista-vazia");
 const formFiltros = document.querySelector("#form-filtros");
 const campoPesquisa = document.querySelector("#pesquisa");
+const filtroStatus = document.querySelector("#filtro-status");
+const filtroCategoria = document.querySelector("#filtro-categoria");
 
 // Cria uma linha da tabela para um livro
 function criarLinha(livro) {
@@ -102,7 +104,7 @@ function normalizar(texto) {
   return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-// Aplica a pesquisa e mostra o resultado
+// Aplica a pesquisa e os filtros e mostra o resultado
 function atualizarLista() {
   let livros = carregarLivros();
 
@@ -114,11 +116,27 @@ function atualizarLista() {
     });
   }
 
+  // Filtro por status de leitura
+  if (filtroStatus.value !== "todos") {
+    livros = livros.filter(function (livro) {
+      return livro.status === filtroStatus.value;
+    });
+  }
+
+  // Filtro por categoria
+  if (filtroCategoria.value !== "todas") {
+    livros = livros.filter(function (livro) {
+      return livro.categoria === filtroCategoria.value;
+    });
+  }
+
   mostrarLivros(livros);
 }
 
-// A lista muda enquanto a pessoa digita
+// A lista muda enquanto a pessoa digita ou troca um filtro
 campoPesquisa.addEventListener("input", atualizarLista);
+filtroStatus.addEventListener("change", atualizarLista);
+filtroCategoria.addEventListener("change", atualizarLista);
 
 // O botão "Pesquisar" também funciona (sem recarregar a página)
 formFiltros.addEventListener("submit", function (evento) {
