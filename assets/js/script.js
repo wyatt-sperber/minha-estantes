@@ -1,1 +1,176 @@
-// JavaScript do site - será feito na Etapa 3
+// =====================================================
+// MINHA ESTANTE - funções usadas em todas as páginas
+// =====================================================
+
+// Nome da "gaveta" do localStorage onde os livros ficam guardados
+const CHAVE_LIVROS = "minha-estante-livros";
+
+// Nomes que aparecem na tela para cada valor salvo
+const CATEGORIAS = {
+  romance: "Romance",
+  contos: "Contos",
+  ensaio: "Ensaio",
+  poesia: "Poesia",
+  biografia: "Biografia",
+  historia: "História",
+  fantasia: "Fantasia",
+  outros: "Outros"
+};
+
+const STATUS = {
+  "quero-ler": "Quero ler",
+  lendo: "Lendo",
+  lido: "Lido"
+};
+
+// Livros de exemplo, usados só na primeira vez que o site é aberto
+const LIVROS_INICIAIS = [
+  {
+    id: 1,
+    titulo: "Torto Arado",
+    autor: "Itamar Vieira Junior",
+    categoria: "romance",
+    ano: 2019,
+    paginas: 264,
+    capa: "assets/img/torto-arado.jpg",
+    status: "lido",
+    nota: 5,
+    dataConclusao: "2026-03-15",
+    favorito: true,
+    observacoes: "A história das irmãs Bibiana e Belonísia no sertão da Bahia me marcou muito. Um dos melhores livros que já li."
+  },
+  {
+    id: 2,
+    titulo: "Estarão as prisões obsoletas?",
+    autor: "Angela Davis",
+    categoria: "ensaio",
+    ano: 2003,
+    paginas: 144,
+    capa: "assets/img/estarao-as-prisoes-obsoletas.jpg",
+    status: "lendo",
+    nota: "",
+    dataConclusao: "",
+    favorito: false,
+    observacoes: ""
+  },
+  {
+    id: 3,
+    titulo: "Olhos d'água",
+    autor: "Conceição Evaristo",
+    categoria: "contos",
+    ano: 2014,
+    paginas: 116,
+    capa: "assets/img/olhos-dagua.jpg",
+    status: "lido",
+    nota: 5,
+    dataConclusao: "2026-05-02",
+    favorito: true,
+    observacoes: ""
+  },
+  {
+    id: 4,
+    titulo: "Ponciá Vicêncio",
+    autor: "Conceição Evaristo",
+    categoria: "romance",
+    ano: 2003,
+    paginas: 120,
+    capa: "assets/img/poncia-vicencio.jpg",
+    status: "lendo",
+    nota: "",
+    dataConclusao: "",
+    favorito: false,
+    observacoes: ""
+  },
+  {
+    id: 5,
+    titulo: "Becos da Memória",
+    autor: "Conceição Evaristo",
+    categoria: "romance",
+    ano: 2006,
+    paginas: 200,
+    capa: "",
+    status: "quero-ler",
+    nota: "",
+    dataConclusao: "",
+    favorito: false,
+    observacoes: ""
+  },
+  {
+    id: 6,
+    titulo: "Insubmissas lágrimas de mulheres",
+    autor: "Conceição Evaristo",
+    categoria: "contos",
+    ano: 2011,
+    paginas: 141,
+    capa: "assets/img/insubmissas-lagrimas-de-mulheres.jpg",
+    status: "lido",
+    nota: 4,
+    dataConclusao: "2026-08-20",
+    favorito: false,
+    observacoes: ""
+  }
+];
+
+// ----- localStorage -----
+
+// Lê a lista de livros salva. Na primeira visita, salva os livros de exemplo.
+function carregarLivros() {
+  const texto = localStorage.getItem(CHAVE_LIVROS);
+
+  if (texto === null) {
+    salvarLivros(LIVROS_INICIAIS);
+    return LIVROS_INICIAIS;
+  }
+
+  return JSON.parse(texto);
+}
+
+// Salva a lista inteira no localStorage (como texto JSON)
+function salvarLivros(livros) {
+  localStorage.setItem(CHAVE_LIVROS, JSON.stringify(livros));
+}
+
+// Procura um livro pelo id
+function buscarLivroPorId(id) {
+  const livros = carregarLivros();
+  return livros.find(function (livro) {
+    return livro.id === id;
+  });
+}
+
+// ----- Funções de apoio para mostrar os dados -----
+
+// "2026-03-15" vira "15/03/2026"
+function formatarData(data) {
+  if (!data) {
+    return "Não informado";
+  }
+  const partes = data.split("-");
+  return partes[2] + "/" + partes[1] + "/" + partes[0];
+}
+
+// Caminho da capa. As páginas dentro de "pages/" precisam de "../" antes.
+function caminhoCapa(livro, prefixo) {
+  if (!livro.capa) {
+    return prefixo + "assets/img/sem-capa.jpg";
+  }
+  if (livro.capa.startsWith("http")) {
+    return livro.capa;
+  }
+  return prefixo + livro.capa;
+}
+
+// Evita que um texto digitado pelo usuário vire código HTML
+function escaparHTML(texto) {
+  return String(texto)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+// Pega o "id" que está no endereço da página (ex.: detalhes.html?id=3)
+function pegarIdDaUrl() {
+  const parametros = new URLSearchParams(window.location.search);
+  return Number(parametros.get("id"));
+}
