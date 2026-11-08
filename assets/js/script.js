@@ -269,3 +269,20 @@ function preencherFormulario(form, livro) {
   campos.favorito.checked = livro.favorito;
   campos.observacoes.value = livro.observacoes;
 }
+
+// Pergunta se o usuário tem certeza e, se sim, tira o livro da lista salva.
+// Devolve true se o livro foi excluído.
+function excluirLivro(id) {
+  const livro = buscarLivroPorId(id);
+  const confirmou = confirm('Excluir "' + livro.titulo + '" da sua estante?');
+
+  if (!confirmou) {
+    return false;
+  }
+
+  const livrosRestantes = carregarLivros().filter(function (item) {
+    return item.id !== id;
+  });
+  salvarLivros(livrosRestantes);
+  return true;
+}

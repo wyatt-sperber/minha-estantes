@@ -49,6 +49,31 @@ function mostrarLivros(livros) {
 
   // Se não tiver nenhum livro, mostra o aviso
   listaVazia.hidden = livros.length > 0;
+
+  ativarBotoesExcluir();
+}
+
+// Cada botão "Excluir" da tabela remove o seu livro
+function ativarBotoesExcluir() {
+  const botoes = document.querySelectorAll(".botao-excluir");
+
+  botoes.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      const id = Number(botao.dataset.id);
+
+      if (excluirLivro(id)) {
+        mostrarLivros(carregarLivros());
+        mostrarMensagem("Livro excluído da estante.");
+      }
+    });
+  });
+}
+
+// Mostra a caixa verde de mensagem no topo da página
+function mostrarMensagem(texto) {
+  const caixa = document.querySelector("#mensagem");
+  caixa.textContent = texto;
+  caixa.hidden = false;
 }
 
 // Mostra a mensagem de sucesso quando a página abre com ?msg=... no endereço
@@ -61,11 +86,11 @@ function mostrarMensagemDaUrl() {
 
   const parametros = new URLSearchParams(window.location.search);
   const tipo = parametros.get("msg");
-  const caixa = document.querySelector("#mensagem");
 
   if (mensagens[tipo]) {
-    caixa.textContent = mensagens[tipo];
-    caixa.hidden = false;
+    mostrarMensagem(mensagens[tipo]);
+    // Tira o ?msg= do endereço, para a mensagem não voltar ao recarregar a página
+    history.replaceState(null, "", "livros.html");
   }
 }
 

@@ -38,6 +38,13 @@ function mostrarDetalhes(livro) {
     "https://openlibrary.org/search?q=" + encodeURIComponent(livro.titulo);
 }
 
+// Botão "Excluir": apaga o livro e volta para a lista
+document.querySelector("#botao-excluir").addEventListener("click", function () {
+  if (excluirLivro(idLivro)) {
+    window.location.href = "livros.html?msg=excluido";
+  }
+});
+
 if (livroAtual) {
   mostrarDetalhes(livroAtual);
 } else {
