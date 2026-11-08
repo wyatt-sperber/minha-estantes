@@ -5,6 +5,8 @@
 const corpoTabela = document.querySelector("#lista-livros");
 const contador = document.querySelector("#contador");
 const listaVazia = document.querySelector("#lista-vazia");
+const formFiltros = document.querySelector("#form-filtros");
+const campoPesquisa = document.querySelector("#pesquisa");
 
 // Cria uma linha da tabela para um livro
 function criarLinha(livro) {
@@ -62,7 +64,7 @@ function ativarBotoesExcluir() {
       const id = Number(botao.dataset.id);
 
       if (excluirLivro(id)) {
-        mostrarLivros(carregarLivros());
+        atualizarLista();
         mostrarMensagem("Livro excluído da estante.");
       }
     });
@@ -94,5 +96,35 @@ function mostrarMensagemDaUrl() {
   }
 }
 
+// Deixa o texto em minúsculas e sem acentos ("Ponciá" vira "poncia"),
+// para a pesquisa achar o livro mesmo se a pessoa digitar sem acento
+function normalizar(texto) {
+  return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+// Aplica a pesquisa e mostra o resultado
+function atualizarLista() {
+  let livros = carregarLivros();
+
+  // Pesquisa por título ou autor
+  const termo = normalizar(campoPesquisa.value.trim());
+  if (termo !== "") {
+    livros = livros.filter(function (livro) {
+      return normalizar(livro.titulo).includes(termo) || normalizar(livro.autor).includes(termo);
+    });
+  }
+
+  mostrarLivros(livros);
+}
+
+// A lista muda enquanto a pessoa digita
+campoPesquisa.addEventListener("input", atualizarLista);
+
+// O botão "Pesquisar" também funciona (sem recarregar a página)
+formFiltros.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  atualizarLista();
+});
+
 mostrarMensagemDaUrl();
-mostrarLivros(carregarLivros());
+atualizarLista();
