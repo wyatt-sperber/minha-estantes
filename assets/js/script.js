@@ -217,7 +217,8 @@ function validarLivro(livro) {
   if (livro.paginas !== "" && livro.paginas < 1) {
     erros.push({ campo: "paginas", texto: "O número de páginas deve ser maior que zero." });
   }
-  if (livro.capa !== "" && !livro.capa.startsWith("http")) {
+  // A capa pode ser um link da internet ou uma imagem do próprio site (assets/img/...)
+  if (livro.capa !== "" && !livro.capa.startsWith("http") && !livro.capa.startsWith("assets/")) {
     erros.push({ campo: "capa", texto: "O link da capa deve começar com http:// ou https://." });
   }
   if (livro.dataConclusao !== "" && livro.dataConclusao > hoje) {
@@ -250,4 +251,21 @@ function mostrarErros(form, caixaErros, erros) {
   caixaErros.innerHTML = html;
   caixaErros.hidden = false;
   caixaErros.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// Coloca os dados de um livro dentro dos campos do formulário (usado na edição)
+function preencherFormulario(form, livro) {
+  const campos = form.elements;
+
+  campos.titulo.value = livro.titulo;
+  campos.autor.value = livro.autor;
+  campos.categoria.value = livro.categoria;
+  campos.ano.value = livro.ano;
+  campos.paginas.value = livro.paginas;
+  campos.capa.value = livro.capa;
+  campos.status.value = livro.status;
+  campos.nota.value = livro.nota;
+  campos.data.value = livro.dataConclusao;
+  campos.favorito.checked = livro.favorito;
+  campos.observacoes.value = livro.observacoes;
 }

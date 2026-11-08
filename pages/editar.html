@@ -26,26 +26,30 @@
   <main class="container">
     <h2>Editar livro</h2>
 
-    <section class="caixa">
-      <h3>Torto Arado</h3>
+    <section class="caixa" id="area-edicao">
+      <h3 id="titulo-edicao">Carregando...</h3>
       <p class="aviso-obrigatorio">Campos com * são obrigatórios.</p>
 
-      <form class="formulario">
+      <!-- Lista de erros da validação (preenchida pelo JavaScript) -->
+      <div id="erros" class="mensagem erro" hidden></div>
+
+      <!-- Os campos são preenchidos pelo JavaScript (editar.js) com os dados salvos -->
+      <form id="form-editar" class="formulario" novalidate>
         <div class="campo">
           <label for="titulo">Título *</label>
-          <input type="text" id="titulo" name="titulo" value="Torto Arado" required>
+          <input type="text" id="titulo" name="titulo" required>
         </div>
 
         <div class="campo">
           <label for="autor">Autor *</label>
-          <input type="text" id="autor" name="autor" value="Itamar Vieira Junior" required>
+          <input type="text" id="autor" name="autor" required>
         </div>
 
         <div class="campo">
           <label for="categoria">Categoria *</label>
           <select id="categoria" name="categoria" required>
             <option value="">Selecione</option>
-            <option value="romance" selected>Romance</option>
+            <option value="romance">Romance</option>
             <option value="contos">Contos</option>
             <option value="ensaio">Ensaio</option>
             <option value="poesia">Poesia</option>
@@ -58,12 +62,12 @@
 
         <div class="campo">
           <label for="ano">Ano</label>
-          <input type="number" id="ano" name="ano" value="2019" min="1000" max="2026">
+          <input type="number" id="ano" name="ano" min="1000" max="2026">
         </div>
 
         <div class="campo">
           <label for="paginas">Número de páginas</label>
-          <input type="number" id="paginas" name="paginas" value="264" min="1">
+          <input type="number" id="paginas" name="paginas" min="1">
         </div>
 
         <div class="campo">
@@ -83,7 +87,7 @@
               <label for="lendo">Lendo</label>
             </div>
             <div class="opcao">
-              <input type="radio" id="lido" name="status" value="lido" checked>
+              <input type="radio" id="lido" name="status" value="lido">
               <label for="lido">Lido</label>
             </div>
           </div>
@@ -97,36 +101,40 @@
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5" selected>5</option>
+            <option value="5">5</option>
           </select>
         </div>
 
         <div class="campo">
           <label for="data">Terminei de ler em</label>
-          <input type="date" id="data" name="data" value="2026-03-15">
+          <input type="date" id="data" name="data">
         </div>
 
         <div class="opcao campo-inteiro">
-          <input type="checkbox" id="favorito" name="favorito" checked>
+          <input type="checkbox" id="favorito" name="favorito">
           <label for="favorito">Marcar como favorito</label>
         </div>
 
         <div class="campo campo-inteiro">
           <label for="observacoes">Observações</label>
-          <textarea id="observacoes" name="observacoes" rows="4">A história das irmãs Bibiana e Belonísia no sertão da Bahia me marcou muito. Um dos melhores livros que já li.</textarea>
+          <textarea id="observacoes" name="observacoes" rows="4"></textarea>
         </div>
 
         <div class="botoes campo-inteiro">
           <button type="submit" class="botao">Salvar alterações</button>
-          <a href="detalhes.html" class="botao botao-secundario">Cancelar</a>
+          <a href="detalhes.html" class="botao botao-secundario" id="link-cancelar">Cancelar</a>
         </div>
       </form>
     </section>
+
+    <!-- Aparece se o id do endereço não existir -->
+    <p id="nao-encontrado" class="mensagem erro" hidden>Livro não encontrado. <a href="livros.html">Voltar para a lista</a></p>
   </main>
 
   <footer class="rodape">
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/editar.js"></script>
 </body>
 </html>
