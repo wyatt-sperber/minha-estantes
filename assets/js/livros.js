@@ -18,7 +18,7 @@ function criarLinha(livro) {
   const nota = livro.nota ? livro.nota + "/5" : "-";
 
   linha.innerHTML = `
-    <td><img src="${caminhoCapa(livro, "../")}" alt="Capa do livro ${escaparHTML(livro.titulo)}" width="50"></td>
+    <td><img src="${escaparHTML(caminhoCapa(livro, "../"))}" alt="Capa do livro ${escaparHTML(livro.titulo)}" width="50"></td>
     <td class="titulo-livro">${escaparHTML(livro.titulo)}</td>
     <td>${escaparHTML(livro.autor)}</td>
     <td>${CATEGORIAS[livro.categoria] || "Outros"}</td>
