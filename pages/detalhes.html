@@ -24,44 +24,49 @@
   </header>
 
   <main class="container pagina-detalhes">
-    <article class="caixa detalhes-livro">
-      <img src="../assets/img/torto-arado.jpg" alt="Capa do livro Torto Arado" width="200">
+    <!-- Os dados do livro são preenchidos pelo JavaScript (detalhes.js) -->
+    <article class="caixa detalhes-livro" id="detalhes">
+      <img id="detalhe-capa" src="../assets/img/sem-capa.jpg" alt="" width="200">
 
       <div class="detalhes-info">
-        <h2>Torto Arado</h2>
-        <p class="autor">Itamar Vieira Junior</p>
-        <span class="status lido">Lido</span>
+        <h2 id="detalhe-titulo">Carregando...</h2>
+        <p class="autor" id="detalhe-autor"></p>
+        <span class="status" id="detalhe-status"></span>
 
         <h3>Informações</h3>
         <ul class="lista-info">
-          <li><strong>Categoria</strong> Romance</li>
-          <li><strong>Ano</strong> 2019</li>
-          <li><strong>Páginas</strong> 264</li>
-          <li><strong>Nota</strong> 5/5</li>
-          <li><strong>Terminei de ler em</strong> 15/03/2026</li>
-          <li><strong>Favorito</strong> Sim</li>
+          <li><strong>Categoria</strong> <span id="detalhe-categoria"></span></li>
+          <li><strong>Ano</strong> <span id="detalhe-ano"></span></li>
+          <li><strong>Páginas</strong> <span id="detalhe-paginas"></span></li>
+          <li><strong>Nota</strong> <span id="detalhe-nota"></span></li>
+          <li><strong>Terminei de ler em</strong> <span id="detalhe-data"></span></li>
+          <li><strong>Favorito</strong> <span id="detalhe-favorito"></span></li>
         </ul>
 
         <h3>Observações</h3>
-        <p>A história das irmãs Bibiana e Belonísia no sertão da Bahia me marcou muito. Um dos melhores livros que já li.</p>
+        <p id="detalhe-observacoes"></p>
 
         <div class="acoes">
-          <a href="editar.html" class="botao">Editar</a>
-          <button type="button" class="botao botao-perigo">Excluir</button>
+          <a href="editar.html" class="botao" id="link-editar">Editar</a>
+          <button type="button" class="botao botao-perigo" id="botao-excluir">Excluir</button>
           <a href="livros.html" class="botao botao-secundario">Voltar</a>
         </div>
       </div>
     </article>
 
-    <aside class="caixa dica">
+    <aside class="caixa dica" id="mais-informacoes">
       <h3>Mais informações</h3>
-      <p>Veja mais sobre este livro na <a href="https://openlibrary.org/search?q=Torto+Arado">Open Library</a>.</p>
+      <p>Veja mais sobre este livro na <a id="link-open-library" href="https://openlibrary.org">Open Library</a>.</p>
     </aside>
+
+    <!-- Aparece se o id do endereço não existir -->
+    <p id="nao-encontrado" class="mensagem erro" hidden>Livro não encontrado. <a href="livros.html">Voltar para a lista</a></p>
   </main>
 
   <footer class="rodape">
     <p>Minha Estante - 2026 - Feito por Wyatt</p>
   </footer>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/detalhes.js"></script>
 </body>
 </html>

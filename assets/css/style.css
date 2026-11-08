@@ -859,3 +859,8 @@ textarea.invalido {
 .mensagem p {
   margin: 0;
 }
+
+/* Garante que elementos escondidos pelo JavaScript (atributo hidden) sumam mesmo com display: grid/flex */
+[hidden] {
+  display: none !important;
+}
