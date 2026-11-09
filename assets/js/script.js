@@ -3,7 +3,8 @@
 // =====================================================
 
 // Nome da "gaveta" do localStorage onde os livros ficam guardados
-const CHAVE_LIVROS = "minha-estante-livros";
+// (v2: livros de exemplo com as capas reais da Open Library)
+const CHAVE_LIVROS = "minha-estante-livros-v2";
 
 // Nomes que aparecem na tela para cada valor salvo
 const CATEGORIAS = {
@@ -32,7 +33,9 @@ const LIVROS_INICIAIS = [
     categoria: "romance",
     ano: 2019,
     paginas: 264,
-    capa: "assets/img/torto-arado.jpg",
+    isbn: "9786580309313",
+    capa: capaOpenLibrary("9786580309313"),
+    capaReserva: "assets/img/torto-arado.jpg",
     status: "lido",
     nota: 5,
     dataConclusao: "2026-03-15",
@@ -46,7 +49,9 @@ const LIVROS_INICIAIS = [
     categoria: "ensaio",
     ano: 2003,
     paginas: 144,
-    capa: "assets/img/estarao-as-prisoes-obsoletas.jpg",
+    isbn: "9788574321486",
+    capa: capaOpenLibrary("9788574321486"),
+    capaReserva: "assets/img/estarao-as-prisoes-obsoletas.jpg",
     status: "lendo",
     nota: "",
     dataConclusao: "",
@@ -60,7 +65,9 @@ const LIVROS_INICIAIS = [
     categoria: "contos",
     ano: 2014,
     paginas: 116,
-    capa: "assets/img/olhos-dagua.jpg",
+    isbn: "9788534705257",
+    capa: capaOpenLibrary("9788534705257"),
+    capaReserva: "assets/img/olhos-dagua.jpg",
     status: "lido",
     nota: 5,
     dataConclusao: "2026-05-02",
@@ -74,7 +81,9 @@ const LIVROS_INICIAIS = [
     categoria: "romance",
     ano: 2003,
     paginas: 120,
-    capa: "assets/img/poncia-vicencio.jpg",
+    isbn: "9788534705318",
+    capa: capaOpenLibrary("9788534705318"),
+    capaReserva: "assets/img/poncia-vicencio.jpg",
     status: "lendo",
     nota: "",
     dataConclusao: "",
@@ -88,7 +97,9 @@ const LIVROS_INICIAIS = [
     categoria: "romance",
     ano: 2006,
     paginas: 200,
-    capa: "",
+    isbn: "9788534705202",
+    capa: capaOpenLibrary("9788534705202"),
+    capaReserva: "",
     status: "quero-ler",
     nota: "",
     dataConclusao: "",
@@ -102,7 +113,9 @@ const LIVROS_INICIAIS = [
     categoria: "contos",
     ano: 2011,
     paginas: 141,
-    capa: "assets/img/insubmissas-lagrimas-de-mulheres.jpg",
+    isbn: "9788592736064",
+    capa: capaOpenLibrary("9788592736064"),
+    capaReserva: "assets/img/insubmissas-lagrimas-de-mulheres.jpg",
     status: "lido",
     nota: 4,
     dataConclusao: "2026-08-20",
@@ -110,6 +123,13 @@ const LIVROS_INICIAIS = [
     observacoes: ""
   }
 ];
+
+// Endereço da capa de um livro na Open Library, a partir do ISBN.
+// O "?default=false" faz a Open Library dar erro quando não tem a capa,
+// e aí o site usa a imagem reserva (veja "Capas" mais abaixo).
+function capaOpenLibrary(isbn) {
+  return "https://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false";
+}
 
 // ----- localStorage -----
 
@@ -159,6 +179,27 @@ function caminhoCapa(livro, prefixo) {
   }
   return prefixo + livro.capa;
 }
+
+// Imagem usada se a capa da internet não carregar
+function reservaCapa(livro, prefixo) {
+  if (livro.capaReserva) {
+    return prefixo + livro.capaReserva;
+  }
+  return prefixo + "assets/img/sem-capa.jpg";
+}
+
+// ----- Capas -----
+// Se uma imagem com "data-reserva" der erro ao carregar (capa não existe, sem internet...),
+// troca pela imagem reserva. O "true" no final faz o evento ser ouvido em todas as imagens da página.
+document.addEventListener("error", function (evento) {
+  const imagem = evento.target;
+
+  if (imagem.tagName === "IMG" && imagem.dataset.reserva) {
+    const reserva = imagem.dataset.reserva;
+    delete imagem.dataset.reserva; // apaga para não tentar de novo se a reserva também falhar
+    imagem.src = reserva;
+  }
+}, true);
 
 // Evita que um texto digitado pelo usuário vire código HTML
 function escaparHTML(texto) {

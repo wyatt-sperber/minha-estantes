@@ -14,7 +14,7 @@ for (const livro of livrosLendo) {
   const cartao = document.createElement("article");
   cartao.className = "cartao-livro";
   cartao.innerHTML = `
-    <img src="${escaparHTML(caminhoCapa(livro, ""))}" alt="Capa do livro ${escaparHTML(livro.titulo)}" width="100">
+    <img class="capa" src="${escaparHTML(caminhoCapa(livro, ""))}" data-reserva="${escaparHTML(reservaCapa(livro, ""))}" alt="Capa do livro ${escaparHTML(livro.titulo)}" width="100">
     <div>
       <h3>${escaparHTML(livro.titulo)}</h3>
       <p>${escaparHTML(livro.autor)}</p>

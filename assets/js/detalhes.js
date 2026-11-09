@@ -14,6 +14,7 @@ function mostrarDetalhes(livro) {
   document.title = livro.titulo + " - Minha Estante";
 
   const capa = document.querySelector("#detalhe-capa");
+  capa.dataset.reserva = reservaCapa(livro, "../");
   capa.src = caminhoCapa(livro, "../");
   capa.alt = "Capa do livro " + livro.titulo;
 

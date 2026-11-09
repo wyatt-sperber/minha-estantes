@@ -29,8 +29,10 @@ formEditar.addEventListener("submit", function (evento) {
     return;
   }
 
-  // O livro editado continua com o mesmo id
+  // O livro editado continua com o mesmo id, ISBN e imagem reserva
   livroEditado.id = idLivro;
+  livroEditado.isbn = livroAtual.isbn || "";
+  livroEditado.capaReserva = livroAtual.capaReserva || "";
 
   // Troca o livro antigo pelo editado, na mesma posição da lista
   const livros = carregarLivros();

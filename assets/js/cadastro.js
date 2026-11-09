@@ -96,7 +96,7 @@ function mostrarResultados(livrosEncontrados) {
     const detalhes = [livro.autor, livro.ano].filter(Boolean).join(" · ");
 
     item.innerHTML = `
-      <img src="${imagem}" alt="Capa de ${escaparHTML(livro.titulo)}" width="45" loading="lazy">
+      <img class="capa" src="${imagem}" data-reserva="../assets/img/sem-capa.jpg" alt="Capa de ${escaparHTML(livro.titulo)}" width="45" loading="lazy">
       <div>
         <strong>${escaparHTML(livro.titulo)}</strong>
         <span>${escaparHTML(detalhes)}</span>
