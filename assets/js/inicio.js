@@ -4,6 +4,17 @@
 
 const livros = carregarLivros();
 
+// ----- Prateleira com as capas (até 7 livros) -----
+const prateleira = document.querySelector("#prateleira");
+
+for (const livro of livros.slice(0, 7)) {
+  const link = document.createElement("a");
+  link.href = "pages/detalhes.html?id=" + livro.id;
+  link.title = livro.titulo;
+  link.innerHTML = `<img class="capa" src="${escaparHTML(caminhoCapa(livro, ""))}" data-reserva="${escaparHTML(reservaCapa(livro, ""))}" alt="${escaparHTML(livro.titulo)}">`;
+  prateleira.appendChild(link);
+}
+
 // ----- Cartões "Lendo agora" -----
 const gradeLendo = document.querySelector("#lendo-agora");
 const livrosLendo = livros.filter(function (livro) {

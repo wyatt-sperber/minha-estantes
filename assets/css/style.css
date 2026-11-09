@@ -31,7 +31,7 @@
 }
 
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: var(--cor-texto);
@@ -51,7 +51,7 @@ main {
 h1,
 h2,
 h3 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   line-height: 1.2;
   color: var(--cor-principal);
 }
@@ -443,7 +443,7 @@ input[type="checkbox"] {
 
 .numeros strong {
   display: block;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 2.2rem;
   color: var(--cor-principal);
 }
@@ -910,4 +910,94 @@ textarea.invalido {
 
 .resultado-api .botao {
   flex-shrink: 0;
+}
+
+/* =====================================================
+   10. ACABAMENTO VISUAL
+   ===================================================== */
+
+/* Cabeçalho com um degradê suave do vinho */
+.cabecalho {
+  background: linear-gradient(135deg, var(--cor-principal), #3a1626);
+}
+
+/* Todas as capas com o mesmo formato de livro (2 de largura por 3 de altura) */
+.capa {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background-color: #e4e4e7;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tabela-livros img {
+  width: 56px;
+}
+
+/* Página inicial: texto à esquerda e prateleira à direita */
+.boas-vindas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.boas-vindas h2 {
+  font-size: 2.2rem;
+}
+
+/* Prateleira de madeira com as capas em pé */
+.prateleira {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 150px;
+  padding: 0 1rem;
+  overflow: hidden;
+  border-bottom: 10px solid #8a5a3b;
+  box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.4);
+}
+
+.prateleira a {
+  display: block;
+  width: 72px;
+  transition: transform 0.2s;
+}
+
+/* Livros de alturas um pouco diferentes, como numa estante de verdade */
+.prateleira a:nth-child(even) {
+  width: 64px;
+}
+
+.prateleira a:hover,
+.prateleira a:focus-visible {
+  transform: translateY(-8px);
+}
+
+.prateleira img {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .boas-vindas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .boas-vindas h2 {
+    font-size: 1.6rem;
+  }
+
+  .prateleira {
+    min-height: 100px;
+    gap: 0.35rem;
+    padding: 0 0.25rem;
+  }
+
+  .prateleira a,
+  .prateleira a:nth-child(even) {
+    width: 44px;
+  }
 }
